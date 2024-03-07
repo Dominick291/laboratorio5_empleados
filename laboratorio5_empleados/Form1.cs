@@ -116,6 +116,24 @@ namespace laboratorio5_empleados
             dataGridViewReporte.DataSource = null;
             dataGridViewReporte.DataSource = reportes;
             dataGridViewReporte.Refresh();
+
+           
+        }
+
+      
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int NoEmpleado = Convert.ToInt16(comboBox1.SelectedValue);
+            Empleado empleadoEncontrado = empleados.Find(c => c.NoEmpleado == NoEmpleado);
+            label4.Text = empleadoEncontrado.Nombre;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CargarEmpleados();
+            comboBox1.DisplayMember = "Mombre";
+            comboBox1.ValueMember = "NoEmpleado";
+            comboBox1.DataSource = empleados;
         }
     }
     
